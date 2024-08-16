@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./components/home/Home";
+import { Footer } from "./components/footer/Footer";
+import { Header } from "./components/header/Header";
+import { ListarCategorias } from "./components/categorias/listarCategorias/ListarCategorias";
+import { DeletarCategoria } from "./components/categorias/deletarCategoria/DeletarCategoria";
+import { FormCategoria } from "./components/categorias/formCategoria/FormCategoria";
+import { ListaProdutos } from "./components/produtos/listaProdutos/ListaProdutos";
+import { FormProduto } from "./components/produtos/formProduto/FormProduto";
+import { DeletarProduto } from "./components/produtos/deletarProduto/DeletarProduto";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export function App() {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <BrowserRouter>
+      <div className="relative h-screen">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/categorias" element={<ListarCategorias />} />
+          <Route path="/deletarCategoria/:id" element={<DeletarCategoria />} />
+          <Route path="/cadastroCategoria" element={<FormCategoria />} />
+          <Route path="/cadastroCategoria/:id" element={<FormCategoria />} />
+          <Route path="/produtos" element={<ListaProdutos />} />
+          <Route path="/cadastroProduto" element={<FormProduto />} />
+          <Route path="/cadastroProduto/:id" element={<FormProduto />} />
+          <Route path="/deletarProduto/:id" element={<DeletarProduto />} />
+        </Routes>
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </BrowserRouter>
   )
 }
-
-export default App

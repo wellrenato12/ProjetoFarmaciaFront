@@ -1,0 +1,23 @@
+.menu a:after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0px;
+  background: #111111;
+  margin-top: 4px;
+  transition: 0.3s;
+  position: absolute;
+}
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 0 10px;
+}
+
+.menu a {
+  position: relative;
+}
+.menu a:hover::after {
+  width: 100%;
+}
